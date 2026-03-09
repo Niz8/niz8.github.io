@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>niz8 — projects</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #f5f3ef;
+      color: #111;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 48px 40px 32px;
+      border-bottom: 1.5px solid #111;
+    }
+
+    header h1 {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+
+    .projects {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── shared card styles ── */
+    .card {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      border-bottom: 1.5px solid #111;
+      text-decoration: none;
+      color: #111;
+      overflow: hidden;
+      transition: filter 0.2s ease;
+    }
+
+    .card:hover {
+      filter: brightness(0.96);
+    }
+
+    .card:hover .arrow {
+      transform: translateX(6px);
+    }
+
+    .card-text {
+      position: relative;
+      z-index: 2;
+    }
+
+    .card-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.45;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .card-sub {
+      font-size: 14px;
+      font-weight: 400;
+      margin-top: 10px;
+      opacity: 0.55;
+      letter-spacing: 0.01em;
+    }
+
+    .arrow {
+      position: relative;
+      z-index: 2;
+      font-size: 28px;
+      transition: transform 0.2s ease;
+      opacity: 0.4;
+    }
+
+    /* ── SLAYDLE ── */
+    .card-slaydle {
+      background: #1a1a2e;
+      color: #e8d5b7;
+      border-color: #111;
+    }
+
+    .card-slaydle .card-label,
+    .card-slaydle .card-sub,
+    .card-slaydle .arrow {
+      color: #e8d5b7;
+    }
+
+    .card-slaydle .card-title {
+      color: #e8d5b7;
+    }
+
+    .card-slaydle .deco {
+      position: absolute;
+      right: 120px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: clamp(80px, 14vw, 160px);
+      opacity: 0.07;
+      pointer-events: none;
+      z-index: 1;
+      line-height: 1;
+      user-select: none;
+    }
+
+    /* pixel-grid dots */
+    .card-slaydle::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, #e8d5b720 1px, transparent 1px);
+      background-size: 20px 20px;
+      z-index: 0;
+    }
+
+    /* HP bar strip */
+    .card-slaydle .hp-strip {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 4px;
+      width: 60%;
+      background: #e04a4a;
+      z-index: 2;
+    }
+
+    /* ── ANAGRAM ── */
+    .card-anagram {
+      background: #0d1f0f;
+      color: #a8f0a8;
+      border-color: #111;
+    }
+
+    .card-anagram .card-label,
+    .card-anagram .card-sub,
+    .card-anagram .arrow {
+      color: #a8f0a8;
+    }
+
+    .card-anagram .card-title {
+      color: #c8ffc8;
+    }
+
+    .card-anagram .floating-letters {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .card-anagram .fl {
+      position: absolute;
+      font-size: clamp(18px, 3vw, 36px);
+      font-weight: 700;
+      color: #4caf50;
+      opacity: 0.15;
+      letter-spacing: 0;
+    }
+
+    /* scanline effect */
+    .card-anagram::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 3px,
+        rgba(0,0,0,0.08) 3px,
+        rgba(0,0,0,0.08) 4px
+      );
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ── TUNER ── */
+    .card-tuner {
+      background: #f0ece4;
+    }
+
+    .card-tuner .strings {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .card-tuner .strings line {
+      stroke: #111;
+      stroke-width: 1.2;
+    }
+
+    .card-tuner .tuning-notes {
+      position: absolute;
+      right: 80px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      gap: clamp(10px, 2vw, 28px);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .card-tuner .note {
+      font-size: clamp(28px, 5vw, 60px);
+      font-weight: 700;
+      opacity: 0.12;
+      letter-spacing: -0.02em;
+    }
+
+    footer {
+      padding: 28px 40px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.3;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>niz8 · Projects</h1>
+  </header>
+
+  <section class="projects">
+
+    <!-- SLAYDLE -->
+    <a class="card card-slaydle" href="https://niz8.github.io/slaydle/" target="_blank" rel="noopener">
+      <div class="deco">⚔️</div>
+      <div class="hp-strip"></div>
+      <div class="card-text">
+        <div class="card-label">Daily Word Game</div>
+        <div class="card-title">Slaydle</div>
+        <div class="card-sub">Battle a goblin. Guess the word. One shot a day.</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+    <!-- ANAGRAM -->
+    <a class="card card-anagram" href="https://niz8.github.io/Anagram/" target="_blank" rel="noopener">
+      <div class="floating-letters" aria-hidden="true">
+        <span class="fl" style="top:12%; left:8%">A</span>
+        <span class="fl" style="top:55%; left:14%">N</span>
+        <span class="fl" style="top:25%; left:32%">G</span>
+        <span class="fl" style="top:70%; left:38%">R</span>
+        <span class="fl" style="top:15%; left:52%">A</span>
+        <span class="fl" style="top:60%; left:58%">M</span>
+        <span class="fl" style="top:35%; left:70%">S</span>
+        <span class="fl" style="top:75%; left:76%">W</span>
+        <span class="fl" style="top:20%; left:85%">O</span>
+        <span class="fl" style="top:50%; left:90%">R</span>
+        <span class="fl" style="top:80%; left:22%">D</span>
+        <span class="fl" style="top:40%; left:46%">E</span>
+        <span class="fl" style="top:10%; left:65%">L</span>
+        <span class="fl" style="top:65%; left:80%">T</span>
+      </div>
+      <div class="card-text">
+        <div class="card-label">Word Tool</div>
+        <div class="card-title">Anagram</div>
+        <div class="card-sub">Unscramble any word. Wildcards welcome.</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+    <!-- TUNER -->
+    <a class="card card-tuner" href="https://niz8.github.io/tuner/" target="_blank" rel="noopener">
+      <svg class="strings" viewBox="0 0 1200 240" preserveAspectRatio="none" aria-hidden="true">
+        <!-- 4 ukulele strings, subtly wavy via cubic bezier -->
+        <path d="M0,80 C300,76 900,84 1200,80" fill="none" stroke="#111" stroke-width="1" opacity="0.12"/>
+        <path d="M0,120 C300,114 900,126 1200,120" fill="none" stroke="#111" stroke-width="1.4" opacity="0.1"/>
+        <path d="M0,152 C300,147 900,158 1200,152" fill="none" stroke="#111" stroke-width="1.8" opacity="0.09"/>
+        <path d="M0,180 C300,175 900,186 1200,180" fill="none" stroke="#111" stroke-width="2.2" opacity="0.08"/>
+      </svg>
+      <div class="tuning-notes" aria-hidden="true">
+        <span class="note">G</span>
+        <span class="note">C</span>
+        <span class="note">E</span>
+        <span class="note">A</span>
+      </div>
+      <div class="card-text">
+        <div class="card-label">Instrument Tool</div>
+        <div class="card-title">Uke Tuner</div>
+        <div class="card-sub">Reference tones &amp; chords for ukulele.</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+  </section>
+
+  <footer>vibecoded</footer>
+
+</body>
+</html>
