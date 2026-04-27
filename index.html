@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -12,237 +11,301 @@
       padding: 0;
     }
 
-body {
-  background: #f5f3ef;
-  color: #111;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  min-height: 100vh;
-}
+    body {
+      background: #f5f3ef;
+      color: #111;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+    }
 
-header {
-  padding: 48px 40px 32px;
-  border-bottom: 1.5px solid #111;
-}
+    header {
+      padding: 48px 40px 32px;
+      border-bottom: 1.5px solid #111;
+    }
 
-header h1 {
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  opacity: 0.5;
-}
+    header h1 {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
 
-.projects {
-  display: flex;
-  flex-direction: column;
-}
+    .projects {
+      display: flex;
+      flex-direction: column;
+    }
 
-/* ── shared card styles ── */
-.card {
-  position: relative;
-  width: 100%;
-  height: 240px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 40px;
-  border-bottom: 1.5px solid #111;
-  text-decoration: none;
-  color: #111;
-  overflow: hidden;
-  transition: filter 0.2s ease;
-}
+    /* ── shared card styles ── */
+    .card {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      border-bottom: 1.5px solid #111;
+      text-decoration: none;
+      color: #111;
+      overflow: hidden;
+      transition: filter 0.2s ease;
+    }
 
-.card:hover {
-  filter: brightness(0.96);
-}
+    .card:hover {
+      filter: brightness(0.96);
+    }
 
-.card:hover .arrow {
-  transform: translateX(6px);
-}
+    .card:hover .arrow {
+      transform: translateX(6px);
+    }
 
-.card-text {
-  position: relative;
-  z-index: 2;
-}
+    .card-text {
+      position: relative;
+      z-index: 2;
+    }
 
-.card-label {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  opacity: 0.45;
-  margin-bottom: 10px;
-}
+    .card-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.45;
+      margin-bottom: 10px;
+    }
 
-.card-title {
-  font-size: clamp(36px, 6vw, 72px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1;
-}
+    .card-title {
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
 
-.card-sub {
-  font-size: 14px;
-  font-weight: 400;
-  margin-top: 10px;
-  opacity: 0.55;
-  letter-spacing: 0.01em;
-}
+    .card-sub {
+      font-size: 14px;
+      font-weight: 400;
+      margin-top: 10px;
+      opacity: 0.55;
+      letter-spacing: 0.01em;
+    }
 
-.arrow {
-  position: relative;
-  z-index: 2;
-  font-size: 28px;
-  transition: transform 0.2s ease;
-  opacity: 0.4;
-}
+    .arrow {
+      position: relative;
+      z-index: 2;
+      font-size: 28px;
+      transition: transform 0.2s ease;
+      opacity: 0.4;
+    }
 
-/* ── SLAYDLE ── */
-.card-slaydle {
-  background: #1a1a2e;
-  color: #e8d5b7;
-  border-color: #111;
-}
+    /* ── SLAYDLE ── */
+    .card-slaydle {
+      background: #1a1a2e;
+      color: #e8d5b7;
+      border-color: #111;
+    }
 
-.card-slaydle .card-label,
-.card-slaydle .card-sub,
-.card-slaydle .arrow {
-  color: #e8d5b7;
-}
+    .card-slaydle .card-label,
+    .card-slaydle .card-sub,
+    .card-slaydle .arrow {
+      color: #e8d5b7;
+    }
 
-.card-slaydle .card-title {
-  color: #e8d5b7;
-}
+    .card-slaydle .card-title {
+      color: #e8d5b7;
+    }
 
-.card-slaydle .deco {
-  position: absolute;
-  right: 120px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: clamp(80px, 14vw, 160px);
-  opacity: 0.07;
-  pointer-events: none;
-  z-index: 1;
-  line-height: 1;
-  user-select: none;
-}
+    .card-slaydle .deco {
+      position: absolute;
+      right: 120px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: clamp(80px, 14vw, 160px);
+      opacity: 0.07;
+      pointer-events: none;
+      z-index: 1;
+      line-height: 1;
+      user-select: none;
+    }
 
-/* pixel-grid dots */
-.card-slaydle::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, #e8d5b720 1px, transparent 1px);
-  background-size: 20px 20px;
-  z-index: 0;
-}
+    /* pixel-grid dots */
+    .card-slaydle::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, #e8d5b720 1px, transparent 1px);
+      background-size: 20px 20px;
+      z-index: 0;
+    }
 
-/* HP bar strip */
-.card-slaydle .hp-strip {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 4px;
-  width: 60%;
-  background: #e04a4a;
-  z-index: 2;
-}
+    /* HP bar strip */
+    .card-slaydle .hp-strip {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 4px;
+      width: 60%;
+      background: #e04a4a;
+      z-index: 2;
+    }
 
-/* ── ANAGRAM ── */
-.card-anagram {
-  background: #0d1f0f;
-  color: #a8f0a8;
-  border-color: #111;
-}
+    /* ── ANAGRAM ── */
+    .card-anagram {
+      background: #0d1f0f;
+      color: #a8f0a8;
+      border-color: #111;
+    }
 
-.card-anagram .card-label,
-.card-anagram .card-sub,
-.card-anagram .arrow {
-  color: #a8f0a8;
-}
+    .card-anagram .card-label,
+    .card-anagram .card-sub,
+    .card-anagram .arrow {
+      color: #a8f0a8;
+    }
 
-.card-anagram .card-title {
-  color: #c8ffc8;
-}
+    .card-anagram .card-title {
+      color: #c8ffc8;
+    }
 
-.card-anagram .floating-letters {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
-}
+    .card-anagram .floating-letters {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
 
-.card-anagram .fl {
-  position: absolute;
-  font-size: clamp(18px, 3vw, 36px);
-  font-weight: 700;
-  color: #4caf50;
-  opacity: 0.15;
-  letter-spacing: 0;
-}
+    .card-anagram .fl {
+      position: absolute;
+      font-size: clamp(18px, 3vw, 36px);
+      font-weight: 700;
+      color: #4caf50;
+      opacity: 0.15;
+      letter-spacing: 0;
+    }
 
-/* scanline effect */
-.card-anagram::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent,
-    transparent 3px,
-    rgba(0,0,0,0.08) 3px,
-    rgba(0,0,0,0.08) 4px
-  );
-  z-index: 0;
-  pointer-events: none;
-}
+    /* scanline effect */
+    .card-anagram::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 3px,
+        rgba(0,0,0,0.08) 3px,
+        rgba(0,0,0,0.08) 4px
+      );
+      z-index: 0;
+      pointer-events: none;
+    }
 
-/* ── TUNER ── */
-.card-tuner {
-  background: #f0ece4;
-}
+    /* ── ACECENT ── */
+    .card-acecent {
+      background: #0d0f1a;
+      color: #f5c842;
+      border-color: #111;
+    }
 
-.card-tuner .strings {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-}
+    .card-acecent .card-label,
+    .card-acecent .card-sub,
+    .card-acecent .arrow {
+      color: #f5c842;
+    }
 
-.card-tuner .strings line {
-  stroke: #111;
-  stroke-width: 1.2;
-}
+    .card-acecent .card-title {
+      color: #f5c842;
+      letter-spacing: 0.04em;
+    }
 
-.card-tuner .tuning-notes {
-  position: absolute;
-  right: 80px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  gap: clamp(10px, 2vw, 28px);
-  z-index: 2;
-  pointer-events: none;
-}
+    .card-acecent .card-sub {
+      color: #ffffff;
+      opacity: 0.35;
+    }
 
-.card-tuner .note {
-  font-size: clamp(28px, 5vw, 60px);
-  font-weight: 700;
-  opacity: 0.12;
-  letter-spacing: -0.02em;
-}
+    .card-acecent::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, #ffffff55 1px, transparent 1px),
+        radial-gradient(circle, #ffffff22 1px, transparent 1px);
+      background-size: 60px 60px, 37px 37px;
+      background-position: 0 0, 20px 20px;
+      z-index: 0;
+      pointer-events: none;
+    }
 
-footer {
-  padding: 28px 40px;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  opacity: 0.3;
-}
+    .card-acecent .deco-cards {
+      position: absolute;
+      right: 80px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 2;
+      pointer-events: none;
+    }
 
+    .card-acecent .playing-card {
+      width: 44px;
+      height: 62px;
+      background: #1c2040;
+      border: 1.5px solid rgba(245,200,66,0.3);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #f5c842;
+      opacity: 0.3;
+    }
 
+    .card-acecent .playing-card.red {
+      color: #e04a4a;
+    }
+
+    /* ── TUNER ── */
+    .card-tuner {
+      background: #f0ece4;
+    }
+
+    .card-tuner .strings {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .card-tuner .strings line {
+      stroke: #111;
+      stroke-width: 1.2;
+    }
+
+    .card-tuner .tuning-notes {
+      position: absolute;
+      right: 80px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      gap: clamp(10px, 2vw, 28px);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .card-tuner .note {
+      font-size: clamp(28px, 5vw, 60px);
+      font-weight: 700;
+      opacity: 0.12;
+      letter-spacing: -0.02em;
+    }
+
+    footer {
+      padding: 28px 40px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.3;
+    }
   </style>
 </head>
 <body>
@@ -253,68 +316,81 @@ footer {
 
   <section class="projects">
 
+    <!-- SLAYDLE -->
+    <a class="card card-slaydle" href="https://niz8.github.io/slaydle/" target="_blank" rel="noopener">
+      <div class="deco">⚔️</div>
+      <div class="hp-strip"></div>
+      <div class="card-text">
+        <div class="card-label">Daily Combat Game</div>
+        <div class="card-title">Slaydle</div>
+        <div class="card-sub">Daily goblin battle. Pick your weapon. Pick your element.</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
 
-<!-- SLAYDLE -->
-<a class="card card-slaydle" href="https://niz8.github.io/slaydle/" target="_blank" rel="noopener">
-  <div class="deco">⚔️</div>
-  <div class="hp-strip"></div>
-  <div class="card-text">
-    <div class="card-label">Daily Combat Game</div>
-    <div class="card-title">Slaydle</div>
-    <div class="card-sub">Daily goblin battle. Pick your weapon. Pick your element.</div>
-  </div>
-  <span class="arrow">→</span>
-</a>
+    <!-- ANAGRAM -->
+    <a class="card card-anagram" href="https://niz8.github.io/Anagram/" target="_blank" rel="noopener">
+      <div class="floating-letters" aria-hidden="true">
+        <span class="fl" style="top:12%; left:8%">A</span>
+        <span class="fl" style="top:55%; left:14%">N</span>
+        <span class="fl" style="top:25%; left:32%">G</span>
+        <span class="fl" style="top:70%; left:38%">R</span>
+        <span class="fl" style="top:15%; left:52%">A</span>
+        <span class="fl" style="top:60%; left:58%">M</span>
+        <span class="fl" style="top:35%; left:70%">S</span>
+        <span class="fl" style="top:75%; left:76%">W</span>
+        <span class="fl" style="top:20%; left:85%">O</span>
+        <span class="fl" style="top:50%; left:90%">R</span>
+        <span class="fl" style="top:80%; left:22%">D</span>
+        <span class="fl" style="top:40%; left:46%">E</span>
+        <span class="fl" style="top:10%; left:65%">L</span>
+        <span class="fl" style="top:65%; left:80%">T</span>
+      </div>
+      <div class="card-text">
+        <div class="card-label">Word Tool</div>
+        <div class="card-title">Anagram</div>
+        <div class="card-sub">Unscramble any word. Wildcards welcome.</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
 
-<!-- ANAGRAM -->
-<a class="card card-anagram" href="https://niz8.github.io/Anagram/" target="_blank" rel="noopener">
-  <div class="floating-letters" aria-hidden="true">
-    <span class="fl" style="top:12%; left:8%">A</span>
-    <span class="fl" style="top:55%; left:14%">N</span>
-    <span class="fl" style="top:25%; left:32%">G</span>
-    <span class="fl" style="top:70%; left:38%">R</span>
-    <span class="fl" style="top:15%; left:52%">A</span>
-    <span class="fl" style="top:60%; left:58%">M</span>
-    <span class="fl" style="top:35%; left:70%">S</span>
-    <span class="fl" style="top:75%; left:76%">W</span>
-    <span class="fl" style="top:20%; left:85%">O</span>
-    <span class="fl" style="top:50%; left:90%">R</span>
-    <span class="fl" style="top:80%; left:22%">D</span>
-    <span class="fl" style="top:40%; left:46%">E</span>
-    <span class="fl" style="top:10%; left:65%">L</span>
-    <span class="fl" style="top:65%; left:80%">T</span>
-  </div>
-  <div class="card-text">
-    <div class="card-label">Word Tool</div>
-    <div class="card-title">Anagram</div>
-    <div class="card-sub">Unscramble any word. Wildcards welcome.</div>
-  </div>
-  <span class="arrow">→</span>
-</a>
+    <!-- ACECENT -->
+    <a class="card card-acecent" href="https://niz8.github.io/acecent" target="_blank" rel="noopener">
+      <div class="deco-cards" aria-hidden="true">
+        <div class="playing-card">A♦</div>
+        <div class="playing-card">7♦</div>
+        <div class="playing-card">3♣</div>
+      </div>
+      <div class="card-text">
+        <div class="card-label">Daily Strategy Game</div>
+        <div class="card-title">Acecent</div>
+        <div class="card-sub">Burn cards as fuel. Launch your rocket.</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
 
-<!-- TUNER -->
-<a class="card card-tuner" href="https://niz8.github.io/tuner/" target="_blank" rel="noopener">
-  <svg class="strings" viewBox="0 0 1200 240" preserveAspectRatio="none" aria-hidden="true">
-    <!-- 4 ukulele strings, subtly wavy via cubic bezier -->
-    <path d="M0,80 C300,76 900,84 1200,80" fill="none" stroke="#111" stroke-width="1" opacity="0.12"/>
-    <path d="M0,120 C300,114 900,126 1200,120" fill="none" stroke="#111" stroke-width="1.4" opacity="0.1"/>
-    <path d="M0,152 C300,147 900,158 1200,152" fill="none" stroke="#111" stroke-width="1.8" opacity="0.09"/>
-    <path d="M0,180 C300,175 900,186 1200,180" fill="none" stroke="#111" stroke-width="2.2" opacity="0.08"/>
-  </svg>
-  <div class="tuning-notes" aria-hidden="true">
-    <span class="note">G</span>
-    <span class="note">C</span>
-    <span class="note">E</span>
-    <span class="note">A</span>
-  </div>
-  <div class="card-text">
-    <div class="card-label">Instrument Tool</div>
-    <div class="card-title">Uke Tuner</div>
-    <div class="card-sub">Reference tones &amp; chords for ukulele.</div>
-  </div>
-  <span class="arrow">→</span>
-</a>
-
+    <!-- TUNER -->
+    <a class="card card-tuner" href="https://niz8.github.io/tuner/" target="_blank" rel="noopener">
+      <svg class="strings" viewBox="0 0 1200 240" preserveAspectRatio="none" aria-hidden="true">
+        <!-- 4 ukulele strings, subtly wavy via cubic bezier -->
+        <path d="M0,80 C300,76 900,84 1200,80" fill="none" stroke="#111" stroke-width="1" opacity="0.12"/>
+        <path d="M0,120 C300,114 900,126 1200,120" fill="none" stroke="#111" stroke-width="1.4" opacity="0.1"/>
+        <path d="M0,152 C300,147 900,158 1200,152" fill="none" stroke="#111" stroke-width="1.8" opacity="0.09"/>
+        <path d="M0,180 C300,175 900,186 1200,180" fill="none" stroke="#111" stroke-width="2.2" opacity="0.08"/>
+      </svg>
+      <div class="tuning-notes" aria-hidden="true">
+        <span class="note">G</span>
+        <span class="note">C</span>
+        <span class="note">E</span>
+        <span class="note">A</span>
+      </div>
+      <div class="card-text">
+        <div class="card-label">Instrument Tool</div>
+        <div class="card-title">Uke Tuner</div>
+        <div class="card-sub">Reference tones &amp; chords for ukulele.</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
 
   </section>
 
